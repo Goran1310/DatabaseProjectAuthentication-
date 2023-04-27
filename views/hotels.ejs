@@ -10,10 +10,16 @@
       <% hotels.forEach(function(hotel) { %>
         <div class="row px-3 py-1 w-100">
           <span class="col py-1 bg-info"><%=hotel.Name%><span class="right"><%=hotel.Location%></span></span>
+          <%if(user !=null){%>
           <a href="/rooms/<%=hotel.id%>" class="col btn btn-secondary"> Rent a room</a>  
+          <%};%>
           <a href="/hotels/<%=hotel.id%>" class="col btn btn-secondary"> Details</a> 
+          <button onclick="deleteHotel('<%=hotel.id%>','http\:\/\/localhost:3000\/hotels\/<%=hotel.id%>\/delete' )" class="col btn btn-danger"> Delete</button>
         </div>
       <% }); %>
     </div>
+    <button onclick="addHotel('http\:\/\/localhost:3000\/hotels\/add' )" class="btn btn-success"> Add a hotel</button>
+    <script src="../javascripts/deleteHotel.js"></script>
+    <script src="../javascripts/addHotel.js"></script>
   </body>
 </html>
