@@ -1,4 +1,13 @@
 module.exports = {
+      isAdmin: function(req, res, next) {
+        if(req.user.role === "Admin") {
+            next();
+            return;
+        }
+        else {
+            res.status(401).send(new Error());
+        }
+    },
     checkIfAuthorized: function(req, res, next) {
         if(req.user == null) {
             res.status(401).send(new Error());
